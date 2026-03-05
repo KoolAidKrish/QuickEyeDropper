@@ -11,6 +11,7 @@ const historySwatches = document.getElementById('history-swatches');
 const clearHistoryBtn = document.getElementById('clear-history-btn');
 
 // --- Manual Input Elements ---
+const manualPreview = document.getElementById('manual-preview');
 const inputHex = document.getElementById('input-hex');
 const inputRgb = document.getElementById('input-rgb');
 const inputHsl = document.getElementById('input-hsl');
@@ -76,6 +77,7 @@ function displayColor(colorData, saveToHistory = true) {
   
   // 1. Update Picker UI
   preview.style.background = hex;
+  manualPreview.style.background = hex;
   nameDisplay.textContent = name || hex;
   hexVal.textContent = hex.toUpperCase();
   rgbVal.textContent = `rgb(${rgb.r}, ${rgb.g}, ${rgb.b})`;
@@ -115,12 +117,13 @@ function saveColorToHistory(hex) {
 // 1. Initialize the iro.js Color Wheel
 const colorPicker = new iro.ColorPicker("#color-wheel", {
   width: 220,
-  color: "#8b5cf6", // Default starting color
+  color: "#8b5cf6", 
   borderWidth: 2,
   borderColor: "#222",
+  handleRadius: 14, 
   layout: [
     { component: iro.ui.Wheel, options: {} },
-    { component: iro.ui.Slider, options: { sliderType: 'value' } } // Lightness slider
+    { component: iro.ui.Slider, options: { sliderType: 'value', marginTop: 16 } } 
   ]
 });
 
